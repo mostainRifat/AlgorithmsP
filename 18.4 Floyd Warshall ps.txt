@@ -1,0 +1,20 @@
+intput --> A weighted graph as an adajency matrix;
+output --> all pair shortest distance;
+
+-creaate a distance matrix "d" where d[i][j] = x where there 
+is a directedge from node "i" to node "j" and the cost is "x" // O(v^2)
+-for all node "i" d[i][i] =0;
+-for all nodes "i" & "j" where there isn't direct edge i->j
+    d[i][j] = INF;
+
+
+-for all node "k"
+    - for all node "u"
+        - for all node "V"
+            -d[u][v] =min( d[u][v], d[u][k] + d[k][v]);  // O(v^3)
+
+- output all pair shortest distance;
+
+======COMPLEXITY======
+time COMPLEXITY -----> O(v^3);
+Space COMPLEXITY ----> O(v^2);

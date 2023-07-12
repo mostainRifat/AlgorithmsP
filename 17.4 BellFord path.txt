@@ -1,0 +1,67 @@
+input -> a weighted graph & src node(no negative cycle) & destinatio_node
+Output -> Shortest distance from src node to all other node
+
+relaxation
+    d[u]+ c(u,v)<d[v]
+    --> d[v]=d[u]+ c(u,v)
+
+n--> number of nodes 
+m--> number of edges
+ 
+
+-create a distance array "d" with all values to infinity // O(n)
+-create a parent array;
+-d[src]=0; O(1)
+-parent [src] =-1;
+
+negativeCycle = false;
+last_updated_node = -1;
+
+for i=1 to n// O(n)
+    for all eedge e(u, v, w); // O(m)
+        //relax "e"
+        if d[u]+w<d[v]
+            d[v]= d[u]+w;
+            parent [v]=u;
+            if i == n;
+                negativeCycle= true;
+                last_updated_node = v;
+
+            
+print wheather negativeCycle exist;
+
+if negativeCycle= false    // O(n);
+    - print the distance array "d"
+    - selected_node = destination_node
+    -declare a vector path
+    -while true
+        path.push_back(selected_node)
+        if selected_node == src : 
+            break
+        selected_node= parent[selected_node]
+    reverse the vector path
+    print path;
+
+else: //O(n)
+    -print negativeCycle exists
+    -selected_node = last_updated_node;
+    -for i=1 to n-1
+        selected_node = parent[selected_node]
+    -firstNode = selected_node;
+    -declare a vector "cycle"
+    -cycle.push_back(selected_node)
+    -while true
+        selected_node = parent[selected_node]
+        cycle.push_back(selected_node)
+        if selected_node == firstNode
+            breeak;
+    reverse the vector path
+    print path;        
+
+
+
+---------------COMPLEXITY--------------
+Time --> O(n*m)--> O( |V| * |E| ) --> O(n^3)
+edge can be node^2
+
+Space O(n);

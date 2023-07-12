@@ -1,0 +1,30 @@
+----------DIJKSTRA ALORITHIM----------
+
+in put -> a weighted graph and a source node
+output->  distance of all node from the source node
+
+
+1) taking a distance array 'd' and initialize all values of 'd' to infinity
+{space complexity is O(n)}
+{time complexity is O(1)}
+
+1.5) d[source node]=0;
+
+2) taking a visited array and mark all nodes as unvisited
+{space complexity is O(n)}
+{time complexity is O(1) if do it using loop then O(n) }
+
+3) for i=0 to n-1 O(n)
+   - pick the unvisited node with lowest d[node]  O(n)
+   - visited[node]=1
+   - for all adjacency node of node  O(m) m means edges total edges can be n^2
+   - if d[node]+cost[node,adjacency node]<d[adjacency node]
+     - d[adjacency node]=d[node]+cost[node,adjacency node]
+
+
+----------TOTAL TIME AND SPACE COMPLEXITY OF THIS CODE----------
+i) space complexity is o(n)
+
+ii) time complexity is n*n + m[as m can be n^2 ] it is (n^2 + n^2 ) or n^2
+
+
